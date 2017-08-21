@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PubCloud.iml" filepath="$PROJECT_DIR$/.idea/modules/PubCloud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/gwSrc/gwSrc.iml" filepath="$PROJECT_DIR$/.idea/modules/gwSrc/gwSrc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/opSrc/opSrc.iml" filepath="$PROJECT_DIR$/.idea/modules/opSrc/opSrc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/procSrc/procSrc.iml" filepath="$PROJECT_DIR$/.idea/modules/procSrc/procSrc.iml" />
+    </modules>
+  </component>
+</project>

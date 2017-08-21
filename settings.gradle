@@ -1,0 +1,4 @@
+rootProject.name = 'PubCloud'
+include 'gwSrc'
+include 'opSrc'
+include 'procSrc'

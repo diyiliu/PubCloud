@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<property>
+		<name>job_name</name>
+		<value>alarmcount</value>
+		<description>任务名称，独立运行时必配项，在op环境运行时可以不配置</description>
+	</property>
+	<property>
+		<name>op.perid</name>
+		<value>d</value>
+		<description>周期标记,d代表天,w代表周,m代表月</description>
+	</property>
+	<property>
+		<name>op.plan_time</name>
+		<value>01:00</value>
+		<description>计划执行时间</description>
+	</property>
+	<property>
+		<name>dataDir</name>
+		<value>/tstar/xiot_p2p_alarmdata</value>
+		<description>hdfs上要分析的数据目录，可以多个目录以逗号分隔，也可以写正则表达式。
+			eg：“/tstar/[a-z]*/ZL_[a-zA-Z0-9]*_WORKDATA,/tstar/sample”
+		</description>
+	</property>
+	<property>
+		<name>time_window</name>
+		<value>1</value>
+		<description>时间窗口，每次计算前多少天的数据</description>
+	</property>
+
+	<!--mysql 链接配置 -->
+	<!-- <property> <name>tstar.op.database.username</name> <value>temp</value> 
+		</property> <property> <name>tstar.op.database.password</name> <value>temp</value> 
+		</property> <property> <name>tstar.op.database.driver</name> <value>com.mysql.jdbc.Driver</value> 
+		</property> <property> <name>tstar.op.database.url</name> <value>jdbc:mysql://192.168.103.201:3306/plana</value> 
+		</property> -->
+
+	<!--oracle 链接配置 -->
+	<property>
+		<name>tstar.op.database.username</name>
+		<value>XIOT</value>
+	</property>
+	<property>
+		<name>tstar.op.database.password</name>
+		<value>XIOT</value>
+	</property>
+	<property>
+		<name>tstar.op.database.driver</name>
+		<value>oracle.jdbc.driver.OracleDriver</value>
+	</property>
+	<property>
+		<name>tstar.op.database.url</name>
+		<value>jdbc:oracle:thin:@192.168.1.156:1521/xgsid.xg156.com</value>
+	</property>
+
+</configuration>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="gwSrc" target="1.7" />
+      <module name="gwSrc_main" target="1.7" />
+      <module name="gwSrc_test" target="1.7" />
+      <module name="opSrc" target="1.7" />
+      <module name="opSrc_main" target="1.7" />
+      <module name="opSrc_test" target="1.7" />
+      <module name="procSrc" target="1.7" />
+      <module name="procSrc_main" target="1.7" />
+      <module name="procSrc_test" target="1.7" />
+      <module name="PubCloud" target="1.7" />
+      <module name="PubCloud_main" target="1.7" />
+      <module name="PubCloud_test" target="1.7" />
+      <module name="wsSrc_main" target="1.7" />
+      <module name="wsSrc_test" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

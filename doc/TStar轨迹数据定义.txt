@@ -1,0 +1,24 @@
+{
+    "gpsTime":"2017-08-08 11:25:33",
+    "speed":50,
+    "altitude":100,
+    "direction":30,
+    "locationStatus":1,
+    "accStatus":0,
+    "originalLng":117,
+    "originalLat":34,
+    "lng":117,
+    "lat":34
+}
+
+说明：
+gpsTime: gps时间，格式为: yyyy-MM-dd HH:mm:ss
+speed: 速度，单位 km/h
+altitude: 海拔高度， 单位 m
+direction: 方向，范围为0~180,单位2度
+locationStatus: 定位状态，1:已定位；0：未定位
+accStatus: acc状态，1：Acc开；0：Acc关
+originalLng:原始经度
+originalLat:原始纬度
+lng: 高德地图经度
+lat: 高德地图纬度

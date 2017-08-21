@@ -1,0 +1,51 @@
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%date %level [%thread] %logger{10} [%file:%line] %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="tstar" class="ch.qos.logback.classic.sift.SiftingAppender">
+		<discriminator>
+			<Key>role</Key>
+			<DefaultValue>default</DefaultValue>
+		</discriminator>
+		<sift>
+			<appender name="FILE-${role}"
+				class="ch.qos.logback.core.rolling.RollingFileAppender">
+				<File>logs/tstar-${role}.log</File>
+				<rollingPolicy
+					class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+					<FileNamePattern>logs/tstar-${role}.%i.log</FileNamePattern>
+					<MinIndex>1</MinIndex>
+					<MaxIndex>100</MaxIndex>
+				</rollingPolicy>
+				<triggeringPolicy
+					class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+					<MaxFileSize>50MB</MaxFileSize>
+				</triggeringPolicy>
+				<Append>true</Append>
+				<layout class="ch.qos.logback.classic.PatternLayout">
+					<Pattern>%date %level [%thread] %logger{10} [%file:%line] %msg%n
+					</Pattern>
+				</layout>
+			</appender>
+		</sift>
+	</appender>
+
+	<logger name="cn.com.tiza.tstar.process" >
+		<level value="INFO" />
+		<appender-ref ref="tstar" />
+	</logger>
+    
+    <logger name="com.mchange.v2" additivity="false" >
+                <level value="INFO" />
+                <appender-ref ref="tstar" />
+      </logger>
+	
+	<root level="INFO">
+		<appender-ref ref="STDOUT" />
+	</root>
+</configuration>

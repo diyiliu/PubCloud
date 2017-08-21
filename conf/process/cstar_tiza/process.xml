@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="cstarParseHandler" class="com.tiza.process.cstar_tiza.CStarParseHandler">
+        <property name="dataOutType" value="0"/>  <!-- 数据输出类型，默认是为无输出 0:无输出 1:kafka 2:rdbms 3:redis -->
+        <property name="tbname" value=""/>  <!-- 表名或者topic名称-->
+        <property name="name" value="cstarParseHandler"/>   <!-- processor名称 -->
+        <property name="tasknum" value="2"/>     <!-- 任务数 -->
+        <property name="grouping" value="0"/>    <!-- 与上一个processor的数据分组方式 -->
+    </bean>
+
+	<bean id="currentStatusModule" class="com.tiza.process.common.handler.module.CurrentStatusModule">
+		<property name="dataOutType" value="0"/>
+		<property name="tbname" value=""/>
+		<property name="name" value="currentStatusModule"/>
+		<property name="tasknum" value="2"/>
+		<property name="grouping" value="0"/>
+	</bean>
+
+	<bean id="processors" class="cn.com.tiza.tstar.common.process.ProcessorContainer">
+    	<property name="processorList">
+      		<list>
+        		<ref bean="cstarParseHandler"/>
+				<ref bean="currentStatusModule"/>
+      		</list>
+    	</property>
+  	</bean>
+</beans>

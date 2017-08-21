@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="PubCloud" basedir=".">
+
+    <!--load build.properties-->
+    <property file="build.properties"/>
+
+    <property name="bin.dir" value="bin"/>
+    <property name="gwsrc.dir" value="gwSrc"/>
+    <property name="procsrc.dir" value="procSrc"/>
+    <property name="lib.dir" value="lib"/>
+    <property name="external.dir" value="external-lib"/>
+    <property name="conf.dir" value="conf"/>
+    <property name="classes.dir" value="target"/>
+    <property name="dist.dir" value="dist"/>
+    <property name="output.dir" value="output"/>
+
+    <!--加载ant 库 支持for循环 -->
+    <taskdef resource="net/sf/antcontrib/antcontrib.properties">
+        <classpath>
+            <pathelement location="${lib.dir}/common/ant-contrib-1.0b3.jar"/>
+        </classpath>
+    </taskdef>
+
+    <mkdir dir="target"/>
+
+    <!--configuration gateway -->
+    <target name="gateway-build">
+        <javac srcdir="${gwsrc.dir}" destdir="${classes.dir}" includeantruntime="false" encoding="UTF-8">
+            <classpath>
+                <fileset dir="${external.dir}/gateways">
+                    <include name="**/*.jar"/>
+                </fileset>
+                <fileset dir="${lib.dir}/common">
+                    <include name="**/*.jar"/>
+                </fileset>
+                <fileset dir="${lib.dir}/gateways">
+                    <include name="**/*.jar"/>
+                </fileset>
+            </classpath>
+        </javac>
+        <copy todir="${classes.dir}/${package.path}/gateways">
+            <fileset dir="${gwsrc.dir}/src/main/resources">
+                <include name="**/*.properties"/>
+            </fileset>
+        </copy>
+        <foreach list="${gateways}" target="gateway-jar" param="gateway" delimiter=",">
+        </foreach>
+    </target>
+
+    <target name="gateway-pack" depends="gateway-build">
+        <foreach list="${gateways}" target="zip-gateway-func" param="gateway" delimiter=","/>
+    </target>
+
+    <target name="gateway-run-local" depends="gateway-build">
+        <java classname="cn.com.tiza.tstar.gateway.Gateway" fork="true">
+            <classpath>
+                <fileset dir="${external.dir}/gateways/${gateway.run.local}/">
+                    <include name="*.jar"/>
+                </fileset>
+                <fileset dir="${lib.dir}/common">
+                    <include name="*.jar"/>
+                </fileset>
+                <fileset dir="${lib.dir}/gateways">
+                    <include name="*.jar"/>
+                </fileset>
+                <dirset dir="${conf.dir}/gateways/">
+                    <include name="common"/>
+                </dirset>
+                <dirset dir="${conf.dir}/gateways/">
+                    <include name="${gateway.run.local}"/>
+                </dirset>
+                <dirset dir="${classes.dir}"/>
+            </classpath>
+            <arg value="gateway-${gateway.run.local}.xml"/>
+        </java>
+    </target>
+
+
+    <target name="gateway-jar">
+        <jar destfile="${dist.dir}/gateways/${gateway}.jar" basedir="${classes.dir}">
+            <include name="${package.path}/gateways/common/"/>
+            <include name="${package.path}/gateways/${gateway}/"/>
+            <fileset dir="${classes.dir}/${package.path}/gateways/">
+                <include name="**/${gateway}*.properties"/>
+            </fileset>
+        </jar>
+    </target>
+
+    <target name="zip-gateway-func">
+        <zip destfile="${output.dir}/gateways/${gateway}.zip" update="false">
+            <zipfileset dir=".">
+                <include name="lib"/>
+            </zipfileset>
+            <zipfileset dir="${external.dir}/gateways/${gateway}" prefix="lib">
+                <include name="*.jar"/>
+            </zipfileset>
+            <fileset dir="${dist.dir}/gateways">
+                <include name="${gateway}.jar"/>
+            </fileset>
+        </zip>
+    </target>
+
+
+    <!--  configuration process -->
+    <target name="process-build">
+        <javac srcdir="${procsrc.dir}" destdir="${classes.dir}" includeantruntime="false" encoding="UTF-8">
+            <classpath>
+                <fileset dir="${external.dir}/process">
+                    <include name="**/*.jar"/>
+                </fileset>
+                <fileset dir="${lib.dir}/common">
+                    <include name="**/*.jar"/>
+                </fileset>
+                <fileset dir="${lib.dir}/process">
+                    <include name="**/*.jar"/>
+                </fileset>
+            </classpath>
+        </javac>
+        <copy todir="${classes.dir}/${package.path}/process">
+            <fileset dir="${procsrc.dir}/src/main/resources">
+                <include name="**/*.xml"/>
+            </fileset>
+        </copy>
+        <foreach list="${processes}" target="process-jar" param="processname" delimiter=",">
+        </foreach>
+    </target>
+
+    <target name="process-pack" depends="process-build">
+        <foreach list="${processes}" target="zip-process-func" param="processname" delimiter=",">
+        </foreach>
+    </target>
+
+    <target name="process-run-local" depends="process-build">
+        <java classname="cn.com.tiza.tstar.rp.driver.RunLocalDriver" fork="true">
+            <classpath>
+                <fileset dir="${external.dir}/process/${process.run.local}/">
+                    <include name="*.jar"/>
+                </fileset>
+                <fileset dir="${lib.dir}/common">
+                    <include name="*.jar"/>
+                </fileset>
+                <fileset dir="${lib.dir}/process">
+                    <include name="*.jar"/>
+                </fileset>
+                <fileset dir="${lib.dir}/gateways">
+                    <include name="*.jar"/>
+                </fileset>
+                <dirset dir="${conf.dir}/process/">
+                    <include name="common"/>
+                </dirset>
+                <dirset dir="${conf.dir}/process/">
+                    <include name="${process.run.local}"/>
+                </dirset>
+                <dirset dir="${classes.dir}"/>
+            </classpath>
+            <arg value="${process.run.local}"/>
+        </java>
+    </target>
+
+    <target name="process-jar">
+        <jar destfile="${dist.dir}/process/${processname}.jar" basedir="${classes.dir}">
+            <include name="${package.path}/process/common/"/>
+            <include name="${package.path}/process/${processname}/"/>
+            <fileset dir="${classes.dir}/${package.path}/process/">
+                <include name="**/*.xml"/>
+            </fileset>
+            <zipgroupfileset dir="${external.dir}/process/${processname}/" includes="*.jar"/>
+        </jar>
+    </target>
+
+    <target name="zip-process-func">
+        <zip destfile="${output.dir}/process/${processname}.zip" update="true">
+            <zipfileset dir="${conf.dir}/process/${processname}" prefix="conf">
+                <include name="${processname}-*.xml"/>
+            </zipfileset>
+            <fileset dir="${dist.dir}/process">
+                <include name="${processname}.jar"/>
+            </fileset>
+        </zip>
+    </target>
+
+    <!-- clean all-->
+    <target name="clean">
+        <delete verbose="true" includeemptydirs="true">
+            <fileset dir="${basedir}">
+                <include name="dist/**"/>
+            </fileset>
+            <fileset dir="${basedir}">
+                <include name="output/**"/>
+            </fileset>
+            <fileset dir="${classes.dir}">
+                <include name="**/*"/>
+            </fileset>
+            <fileset dir="${basedir}">
+                <include name="logs/**"/>
+            </fileset>
+        </delete>
+    </target>
+</project>

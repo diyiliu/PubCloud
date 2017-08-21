@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property>
+        <name>working.time.m1</name>
+        <value>-10</value>
+        <description>判断跳变点低点</description>
+    </property>
+    <property>
+        <name>working.time.m2</name>
+        <value>1</value>
+        <description>判断跳变点高点</description>
+    </property>
+    <property>
+        <name>working.time.limit</name>
+        <value>10</value>
+        <description>在取前一次工作累计时间时，往前推得天数</description>
+    </property>
+	<property>
+        <name>working.time.avage</name>
+        <value>1</value>
+        <description>平均时间</description>
+    </property>
+    <property>
+        <name>working.time.interval</name>
+        <value>10</value>
+        <description>工作时间差的阀值，单位秒</description>
+    </property>
+</configuration>

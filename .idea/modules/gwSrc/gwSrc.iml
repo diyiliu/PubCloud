@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id=":gwSrc" external.linked.project.path="$MODULE_DIR$/../../../gwSrc" external.root.project.path="$MODULE_DIR$/../../.." external.system.id="GRADLE" external.system.module.group="com.tiza" external.system.module.version="1.0" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="Spring" name="Spring">
+      <configuration />
+    </facet>
+  </component>
+  <component name="NewModuleRootManager">
+    <output url="file://$MODULE_DIR$/../../../gwSrc/out/production/classes" />
+    <output-test url="file://$MODULE_DIR$/../../../gwSrc/out/test/classes" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../gwSrc">
+      <sourceFolder url="file://$MODULE_DIR$/../../../gwSrc/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../gwSrc/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../gwSrc/src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../gwSrc/src/test/resources" type="java-test-resource" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../gwSrc/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../gwSrc/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../gwSrc/out" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="TEST" name="Gradle: junit:junit:4.12" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.hamcrest:hamcrest-core:1.3" level="project" />
+    <orderEntry type="library" name="common" level="project" />
+    <orderEntry type="library" name="gateways" level="project" />
+  </component>
+</module>

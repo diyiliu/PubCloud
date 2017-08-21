@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="app" class="cn.com.tiza.tstar.rp.driver.AppConfig">
+		<property name="workNum" value="2" />     <!-- worker进程数量 -->
+		<property name="inputNum" value="1" />    <!-- 从kafka读取数据的线程数 -->
+		<property name="topic" value="cstar_tiza_rawdata" />   <!-- kafka topic -->
+		<property name="reliable" value="0" />   <!-- 0:不可靠消息机制; 1:可靠消息机制 -->
+		<property name="terminalType" value="cstar_tiza" />   <!--终端类型 -->
+	</bean>
+
+</beans>

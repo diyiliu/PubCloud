@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+<property>
+    <name>kafka.zookeeper.list</name>
+    <value>192.168.1.153:2181,192.168.1.154:2181</value>
+    <description>zookeeper地址，多个以","分隔，也可以只配置一个</description>
+</property>
+<property>
+	<name>kafka.broker.list</name>
+	<value>192.168.1.153:9092,192.168.1.154:9092,192.168.1.155:9092</value>
+	<description>kafka broker地址，多个以","分隔，也可以只配置一个</description>
+</property>
+<property>
+	<name>kafka.topic</name>
+	<value>cstar_tiza_rawdata,mstar_tiza_rawdata</value>
+	<description>需要读取的topic名称</description>
+</property>
+<property>
+	<name>test.record.count</name>
+	<value>2</value>
+	<description>需要测试的记录数</description>
+</property>
+</configuration>

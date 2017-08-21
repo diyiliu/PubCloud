@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="gateways">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/lib/gateways" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/gateways" recursive="false" />
+  </library>
+</component>

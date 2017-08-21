@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" default="false" project-jdk-name="1.7" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+  <component name="SvnBranchConfigurationManager">
+    <option name="myConfigurationMap">
+      <map>
+        <entry key="$PROJECT_DIR$">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://192.168.1.51:7443/svn/%E5%B7%A5%E7%A8%8B%E4%B9%8B%E6%98%9F/CommonLib-1.0.0" />
+                  <option value="https://192.168.1.51:7443/svn/%E5%B7%A5%E7%A8%8B%E4%B9%8B%E6%98%9F/DBScript" />
+                  <option value="https://192.168.1.51:7443/svn/%E5%B7%A5%E7%A8%8B%E4%B9%8B%E6%98%9F/Doc" />
+                  <option value="https://192.168.1.51:7443/svn/%E5%B7%A5%E7%A8%8B%E4%B9%8B%E6%98%9F/branches" />
+                  <option value="https://192.168.1.51:7443/svn/%E5%B7%A5%E7%A8%8B%E4%B9%8B%E6%98%9F/dotNetLibs" />
+                  <option value="https://192.168.1.51:7443/svn/%E5%B7%A5%E7%A8%8B%E4%B9%8B%E6%98%9F/tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://192.168.1.51:7443/svn/%E5%B7%A5%E7%A8%8B%E4%B9%8B%E6%98%9F/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="mySupportsUserInfoFilter" value="true" />
+  </component>
+</project>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <sql id="selectVehicleInfo" description="查询车辆信息" fieldType="">
+        <![CDATA[
+            SELECT c.id,
+               c.terminalid,
+               t.deviceid,
+               t.terminalno,
+               t.simno,
+               t.protocoltype
+            FROM bs_vehicle c
+            INNER JOIN bs_terminal t
+            ON t. id = c. terminalid
+        ]]>
+    </sql>
+
+    <sql id="updateVehicleGpsInfo" description="更新车辆当前位置" fieldType="">
+        <![CDATA[
+            UPDATE bs_vehiclegpsinfo t
+               SET t.encryptlng      = ?,
+                   t.encryptlat      = ?,
+                   t.speed           = ?,
+                   t.direction       = ?,
+                   t.altitude        = ?,
+                   t.gpstime         = ?,
+                   t.systemtime      = SYSDATE,
+                   t.accstatus       = ?,
+                   t.locationstatus  = ?,
+                   t.poweroff        = ?,
+                   t.lowvoltage      = ?,
+                   t.gpsmodulefault  = ?,
+                   t.gpsantennafault = ?
+             WHERE t.vehicleid = ?
+        ]]>
+    </sql>
+
+    <sql id="updateWorkParameter" description="更新车辆工作参数" fieldType="">
+        <![CDATA[
+            UPDATE bs_vehiclegpsinfo t
+               SET t.rotatedirection  = ?,
+                   t.rotatespeed      = ?,
+                   t.fuelvolume       = ?
+             WHERE t.vehicleid = ?
+        ]]>
+    </sql>
+</root>
