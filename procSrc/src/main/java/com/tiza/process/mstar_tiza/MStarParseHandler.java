@@ -9,5 +9,4 @@ import com.tiza.process.common.handler.M2ParseHandler;
  */
 public class MStarParseHandler extends M2ParseHandler {
 
-
 }
